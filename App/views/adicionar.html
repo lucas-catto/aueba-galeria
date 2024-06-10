@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Adicionar Imagem</title>
+        <link rel="stylesheet" href="estilo.css">
+    </head>
+    <body>
+        <h1>Adicionar Imagem</h1>
+
+        <form action="/adicionar" method="post" enctype="multipart/form-data">
+            <label for="imagem">Escolha uma imagem:</label>
+            <input type="file" id="imagem" name="imagem" required>
+        
+            <label for="imagemDescricao">Descrição:</label>
+            <input type="text" id="imagemDescricao" name="imagemDescricao" required>
+        
+            <button type="submit">Adicionar Imagem</button>
+        </form>
+    </body>
+</html>

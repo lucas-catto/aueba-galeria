@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Galeria de Imagens</title>
+        <link rel="stylesheet" href="./estilo.css">
+    </head>
+    <body>
+        <h1>Galeria de Imagens</h1>
+
+        <a href="/adicionar" class="add-button">Adicionar Imagem</a>
+        
+        <div class="gallery">
+            <!-- Aqui as imagens serão listadas -->
+        </div>
+
+        <script>
+            async function fetchImagens() {
+                const response = await fetch('/api/imagens');
+                const imagens  = await response.json();
+                const gallery  = document.querySelector('.gallery');
+                
+                gallery.innerHTML = '';
+
+                imagens.forEach(imagem => {
+
+                    // console.log(imagem);
+                    
+                    const imgDiv = document.createElement('div');
+                    
+                    imgDiv.className = 'image-item';
+
+                    imgDiv.innerHTML = `
+                        <img src="../${imagem.imagemNome}" alt="${imagem.imagemDescricao}">
+                        <p>${imagem.imagemDescricao}</p>
+                        <button class="edit-button" data-id="${imagem.imagemID}">Editar</button>
+                        <button class="delete-button" data-id="${imagem.imagemID}">Excluir</button>
+                    `;
+                    gallery.appendChild(imgDiv);
+                });
+            }
+
+            fetchImagens();
+        </script>
+    </body>
+</html>
